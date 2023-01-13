@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cliente } from 'src/app/model/cliente.model';
 import { CorreiosService } from 'src/app/services/correios.service';
@@ -26,6 +26,7 @@ export class ClientePage implements OnInit {
       nome: ['',[Validators.required]],
       email: ['',[Validators.required]],
       senha: ['',[Validators.required]],
+      senhaconfirm: ['',[Validators.required, this.conferirSenha]],
       CPF: ['',[Validators.required]],
       logradouro: ['',[Validators.required]],
       numero: ['',[Validators.required]],
@@ -42,11 +43,19 @@ export class ClientePage implements OnInit {
     this.router.navigateByUrl('home');
   }
 
+  conferirSenha(control: FormControl){
+    const senha = control.root.get('senha');
+    return senha && control.value !== senha.value ? {
+      conferir: true
+    } : null;
+  }
+
   loadForm(){
     this.clienteForm.patchValue({
       nome: this.cliente.nome,
       email: this.cliente.email,
       senha: this.cliente.senha,
+      senhaconfirm: this.cliente.senhacomfirm,
       CPF: this.cliente.CPF,
       logradouro: this.cliente.logradouro,
       numero: this.cliente.numero,

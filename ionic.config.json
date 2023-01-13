@@ -1,0 +1,7 @@
+{
+  "name": "RangoBrass",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

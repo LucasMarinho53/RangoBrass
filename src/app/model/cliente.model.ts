@@ -7,6 +7,6 @@ export interface Cliente{
   logradouro:string;
   numero:number;
   bairro:string;
-  cidade:string;
+  localidade:string;
   cep:string;
 }

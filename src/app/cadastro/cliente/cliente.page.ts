@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cliente } from 'src/app/model/cliente.model';
+import { CorreiosService } from 'src/app/services/correios.service';
 import { FirebaseclienteService } from 'src/app/services/firebasecliente.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class ClientePage implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private router: Router, private route: ActivatedRoute,
+    private correiosService: CorreiosService,
     private firebaseclienteService: FirebaseclienteService) { }
 
   ngOnInit(): void{
@@ -28,7 +30,7 @@ export class ClientePage implements OnInit {
       logradouro: ['',[Validators.required]],
       numero: ['',[Validators.required]],
       bairro: ['',[Validators.required]],
-      cidade: ['',[Validators.required]],
+      localidade: ['',[Validators.required]],
       cep: ['',[Validators.required]],
       });
   }
@@ -49,9 +51,25 @@ export class ClientePage implements OnInit {
       logradouro: this.cliente.logradouro,
       numero: this.cliente.numero,
       bairro: this.cliente.bairro,
-      cidade: this.cliente.cidade,
+      cidade: this.cliente.localidade,
       cep: this.cliente.cep
     });
   }
 
+  loadEndereco() {
+    const cep:string = this.clienteForm.get('cep')?.value;
+    this.correiosService.getEndereco(cep).subscribe({
+      next: (result:Cliente) => {
+        this.clienteForm.patchValue({
+          logradouro: result.logradouro,
+          bairro: result.bairro,
+          localidade: result.localidade,
+          cep: result.cep
+        });
+      },
+      error: (err) => {
+        console.error(err);
+      }
+  });
+  }
 }

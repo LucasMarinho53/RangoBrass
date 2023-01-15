@@ -13,6 +13,7 @@ import { FirebaseclienteService } from 'src/app/services/firebasecliente.service
 export class ClientePage implements OnInit {
 
   clienteForm!: FormGroup;
+  type: boolean = true;
   @ViewChild('createForm') createForm!: FormGroupDirective;
   cliente!:Cliente;
 
@@ -27,7 +28,7 @@ export class ClientePage implements OnInit {
       email: ['',[Validators.required, Validators.email]],
       senha: ['',[Validators.required, Validators.pattern(/^(?=.*[@*\.])[a-zA-Z0-9@*]{6,10}$/)]],
       senhaconfirm: ['',[Validators.required, this.conferirSenha, Validators.pattern(/^(?=.*[@*\.])[a-zA-Z0-9@*]{6,10}$/)]],
-      CPF: ['',[Validators.required, Validators.pattern(/\d{3}\-\d{3}\-\d{3}\-\d{2}/)]],
+      CPF: ['',[Validators.required, Validators.pattern(/^(\d{3}\.){2}\d{3}\-\d{2}$/)]],
       logradouro: ['',[Validators.required]],
       numero: ['',[Validators.required]],
       bairro: ['',[Validators.required]],
@@ -40,7 +41,7 @@ export class ClientePage implements OnInit {
     let newCliente:Cliente = {...values};
     this.firebaseclienteService.savecliente(newCliente);
     this.createForm.reset();
-    this.router.navigateByUrl('home');
+    this.router.navigateByUrl('login');
   }
 
   conferirSenha(control: FormControl){
@@ -80,5 +81,9 @@ export class ClientePage implements OnInit {
         console.error(err);
       }
   });
+  }
+
+  changeType(){
+    this.type = !this.type;
   }
 }

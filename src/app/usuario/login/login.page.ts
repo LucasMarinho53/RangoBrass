@@ -43,4 +43,8 @@ export class LoginPage implements OnInit {
     this.type = !this.type;
   }
 
+  esqueceuSenha(){
+    this.router.navigateByUrl('home');
+  }
+
 }

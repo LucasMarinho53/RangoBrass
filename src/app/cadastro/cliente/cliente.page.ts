@@ -23,16 +23,16 @@ export class ClientePage implements OnInit {
 
   ngOnInit(): void{
     this.clienteForm = this.formBuilder.group({
-      nome: ['',[Validators.required]],
-      email: ['',[Validators.required]],
-      senha: ['',[Validators.required]],
-      senhaconfirm: ['',[Validators.required, this.conferirSenha]],
-      CPF: ['',[Validators.required]],
+      nome: ['',[Validators.required, Validators.pattern(/^[a-zA-ZÀ-ùÂ-û ]+$/), Validators.minLength(6), Validators.maxLength(50)]],
+      email: ['',[Validators.required, Validators.email]],
+      senha: ['',[Validators.required, Validators.pattern(/^(?=.*[@*\.])[a-zA-Z0-9@*]{6,10}$/)]],
+      senhaconfirm: ['',[Validators.required, this.conferirSenha, Validators.pattern(/^(?=.*[@*\.])[a-zA-Z0-9@*]{6,10}$/)]],
+      CPF: ['',[Validators.required, Validators.pattern(/\d{3}\-\d{3}\-\d{3}\-\d{2}/)]],
       logradouro: ['',[Validators.required]],
       numero: ['',[Validators.required]],
       bairro: ['',[Validators.required]],
       localidade: ['',[Validators.required]],
-      cep: ['',[Validators.required]],
+      cep: ['',[Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
       });
   }
 

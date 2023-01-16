@@ -11,6 +11,7 @@ export class AppComponent {
     { title: 'Cadastrar Pedido', url: 'pedido', icon: 'pizza' },
     { title: 'Cadastrar Prato', url: 'prato', icon: 'ice-cream' },
     { title: 'Login', url: 'login', icon: 'person' },
+    { title: 'Listagem Clientes', url: 'listagem', icon: 'people' },
   ];
   constructor() {}
 }

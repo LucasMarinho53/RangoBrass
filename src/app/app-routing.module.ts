@@ -31,6 +31,15 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./usuario/login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'listagem',
+    loadChildren: () => import('./cadastro/listagem/listagem.module').then( m => m.ListagemPageModule)
+  },
+  {
+    path: 'editar/:id',
+    loadChildren: () => import('./cadastro/editar/editar.module').then( m => m.EditarPageModule)
+  },
+
 
 ];
 

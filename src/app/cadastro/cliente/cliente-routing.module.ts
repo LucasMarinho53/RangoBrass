@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: ClientePage
+  },
+  {
+    path: 'listagem',
+    loadChildren: () => import('../listagem/listagem.module').then( m => m.ListagemPageModule)
   }
 ];
 

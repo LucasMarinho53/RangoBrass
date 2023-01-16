@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cliente</ion-title>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-item-group>
+    <ion-item>
+      <ion-note slot="start">Id</ion-note>
+      <ion-label>{{cliente.id}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-note slot="start">Senha</ion-note>
+      <ion-label>{{cliente.senha}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-note slot="start">CPF</ion-note>
+      <ion-label>{{cliente.CPF}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-note slot="start">Logradouro</ion-note>
+      <ion-label>{{cliente.logradouro}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-note slot="start">Número</ion-note>
+      <ion-label>{{cliente.numero}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-note slot="start">Bairro</ion-note>
+      <ion-label>{{cliente.bairro}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-note slot="start">Localidade</ion-note>
+      <ion-label>{{cliente.localidade}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-note slot="start">Cep</ion-note>
+      <ion-label>{{cliente.cep}}</ion-label>
+    </ion-item>
+  </ion-item-group>
+
+    <ion-row class="ion-justify-content-between">
+      <ion-col size="4" class="ion-text-center">
+        <ion-button size="small" shape="round" (click)="edit(cliente.id)" color="tertiary">Editar <ion-icon slot="end" name="pencil-outline"></ion-icon></ion-button>
+      </ion-col>
+      <ion-col size="4" class="ion-text-center">
+        <ion-button size="small" shape="round" (click)="delete(cliente.id)" color="danger">Excluir <ion-icon name="trash-outline"></ion-icon></ion-button>
+      </ion-col>
+    </ion-row>
+
+</ion-content>

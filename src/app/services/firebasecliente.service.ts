@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection, doc, docSnapshots, Firestore, setDoc } from '@angular/fire/firestore';
+import { collection, collectionData, deleteDoc, doc, docSnapshots, Firestore, setDoc } from '@angular/fire/firestore';
 import { map, Observable } from 'rxjs';
 import { Cliente } from '../model/cliente.model';
 
@@ -27,9 +27,22 @@ export class FirebaseclienteService {
     );
   }
 
+  listcliente(): Observable<Cliente[]> {
+    const clientesCollection = collection(this.firestore, 'clientes');
+    return collectionData(clientesCollection, {idField: 'id'})
+    .pipe(
+      map(result => result as Cliente[])
+    );
+  }
+
   updatecliente(cliente: Cliente): Promise<void>{
     const document = doc(this.firestore, 'clientes', cliente?.id);
     const { id, ...data } = cliente;
     return setDoc(document, data);
+  }
+
+  deletecliente(id: string): Promise<void>{
+    const document = doc(this.firestore, 'clientes', id);
+    return deleteDoc(document);
   }
 }

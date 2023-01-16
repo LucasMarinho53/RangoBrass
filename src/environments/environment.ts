@@ -7,12 +7,12 @@ export const environment = {
   correiosWS: 'http://viacep.com.br/ws',
   firebase:{
     apiKey: "AIzaSyCbt1TqL4K3cHHb7nHA6Do7QPIrA7qNXAI",
-    authDomain: "rangobrass.firebaseapp.com",
-    projectId: "rangobrass",
-    storageBucket: "rangobrass.appspot.com",
-    messagingSenderId: "843895475524",
-    appId: "1:843895475524:web:4ab937feb6b6a80f291b11",
-    measurementId: "G-5EXMX8DQJS"}
+  authDomain: "rangobrass.firebaseapp.com",
+  projectId: "rangobrass",
+  storageBucket: "rangobrass.appspot.com",
+  messagingSenderId: "843895475524",
+  appId: "1:843895475524:web:4ab937feb6b6a80f291b11",
+  measurementId: "G-5EXMX8DQJS"}
 };
 
 /*

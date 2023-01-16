@@ -7,82 +7,100 @@
 
 <ion-content>
 
+  <div class="upper">
+    <div class="icon">
+      <ion-icon name="person"></ion-icon>
+    </div>
+    <p id="cadastro">Faça seu Cadastro!</p>
+  </div>
+
+
+  <div class="middle">
+    <div class="box">
   <form [formGroup]="clienteForm" #createForm="ngForm" fullscreen (submit)="createCliente(clienteForm.value)">
     <ion-item-group>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
-        <ion-item-divider>
-          <ion-label>Dados pessoais</ion-label>
+        <ion-item-divider class="divider">
+          <ion-label color="dark"><strong>Dados pessoais</strong></ion-label>
         </ion-item-divider>
       <ion-item>
-        <ion-label position="stacked">Nome</ion-label>
-        <ion-input formControlName="nome" type="text" required></ion-input>
+        <ion-label position="stacked" color="primary">Nome</ion-label>
+        <ion-input id="input" formControlName="nome" type="text" required></ion-input>
       </ion-item>
     </ion-list>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
-        <ion-label position="stacked">E-mail</ion-label>
-        <ion-input formControlName="email" type="text" required></ion-input>
+        <ion-label position="stacked" color="primary">E-mail</ion-label>
+        <ion-input id="input" formControlName="email" type="text" required></ion-input>
       </ion-item>
     </ion-list>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
-        <ion-label position="stacked">Senha</ion-label>
-        <ion-input [type]="type ? 'password' : 'text'" formControlName="senha" required></ion-input>
+        <ion-label position="stacked" color="primary">Senha</ion-label>
+        <ion-input id="input" [type]="type ? 'password' : 'text'" formControlName="senha" required></ion-input>
         <ion-icon class="ion-align-self-center" slot="end" name="eye-outline" (click)="changeType()" color="primary"></ion-icon>
       </ion-item>
     </ion-list>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
-        <ion-label position="stacked">Comfirmação de Senha</ion-label>
-        <ion-input [type]="type ? 'password' : 'text'" formControlName="senhaconfirm" required></ion-input>
+        <ion-label position="stacked" color="primary">Comfirmação de Senha</ion-label>
+        <ion-input id="input" [type]="type ? 'password' : 'text'" formControlName="senhaconfirm" required></ion-input>
       </ion-item>
     </ion-list>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
-        <ion-label position="stacked">CPF</ion-label>
-        <ion-input formControlName="CPF" type="text" required></ion-input>
+        <ion-label position="stacked" color="primary">CPF</ion-label>
+        <ion-input id="input" formControlName="CPF" type="text" required></ion-input>
       </ion-item>
     </ion-list>
   </ion-item-group>
 
   <ion-item-group>
-    <ion-item-divider>
-      <ion-label>Dados do Endereço</ion-label>
+    <ion-item-divider class="divider">
+      <ion-label color="dark"><strong>Dados do Endereço</strong></ion-label>
     </ion-item-divider>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
-        <ion-label position="stacked">CEP</ion-label>
-        <ion-input (change)="loadEndereco()" formControlName="cep" type="text" required></ion-input>
+        <ion-label position="stacked" color="primary">CEP</ion-label>
+        <ion-input id="input" (change)="loadEndereco()" formControlName="cep" type="text" required></ion-input>
       </ion-item>
     </ion-list>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
-        <ion-label position="stacked">Logradouro</ion-label>
-        <ion-input readonly formControlName="logradouro" type="text" required></ion-input>
+        <ion-label position="stacked" color="primary">Logradouro</ion-label>
+        <ion-input id="input" readonly formControlName="logradouro" type="text" required></ion-input>
       </ion-item>
     </ion-list>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
-        <ion-label position="stacked">Número</ion-label>
-        <ion-input formControlName="numero" type="text" required></ion-input>
+        <ion-label position="stacked" color="primary">Número</ion-label>
+        <ion-input id="input" formControlName="numero" type="text" required></ion-input>
       </ion-item>
     </ion-list>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
-        <ion-label position="stacked">Bairro</ion-label>
-        <ion-input readonly formControlName="bairro" type="text" required></ion-input>
+        <ion-label position="stacked" color="primary">Bairro</ion-label>
+        <ion-input id="input" readonly formControlName="bairro" type="text" required></ion-input>
       </ion-item>
     </ion-list>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
-        <ion-label position="stacked">Cidade</ion-label>
-        <ion-input readonly formControlName="localidade" type="text" required></ion-input>
+        <ion-label position="stacked" color="primary">Cidade</ion-label>
+        <ion-input id="input" readonly formControlName="localidade" type="text" required></ion-input>
       </ion-item>
     </ion-list>
   </ion-item-group>
-  <div class="ion-padding">
-    <ion-button [disabled]="clienteForm.invalid" expand="block" type="submit" class="ion-no-margin">Cadastrar</ion-button>
-  </div>
-</form>
 
+
+      <div class="ion-padding">
+        <ion-button [disabled]="clienteForm.invalid" expand="block" type="submit" class="ion-no-margin">Cadastrar</ion-button>
+      </div>
+    </form>
+  </div>
+</div>
+<br>
+<br>
+<br>
 </ion-content>
+
+

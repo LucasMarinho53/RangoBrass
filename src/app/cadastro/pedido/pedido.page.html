@@ -6,5 +6,49 @@
 </ion-header>
 
 <ion-content>
+  <div class="upper">
+    <div class="icon">
+      <ion-icon name="pizza"></ion-icon>
+    </div>
+    <p id="pedido">Faça seu Pedido!</p>
+  </div>
+
+  <div class="middle">
+    <div class="box">
+      <form [formGroup]="pedidoForm" fullscreen (submit)="createPedido(pedidoForm.value)">
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+          <ion-item>
+            <ion-label position="stacked" color="primary">Nome do recebedor</ion-label>
+            <ion-input id="input" formControlName="nomeuser" type="text" required></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-item class="item-background-color">
+          <ion-select id="select" interface="popover" placeholder="Selecione seu Prato" formControlName="nome">
+            <ion-select-option value="Chocolate do Venom">Chocolate do Venom</ion-select-option>
+            <ion-select-option value="Spider Miojo">Spider Miojo</ion-select-option>
+            <ion-select-option value="Tacos do Deadpool">Tacos do Deadpool</ion-select-option>
+            <ion-select-option value="Sopa do Demolidor">Sopa do Demolidor</ion-select-option>
+            <ion-select-option value="Torta do América">Torta do América</ion-select-option>
+            <ion-select-option value="Burrito de Ferro">Burrito de Ferro</ion-select-option>
+            <ion-select-option value="Chope do Thor">Chope do Thor</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item class="item-background-color">
+          <ion-select id="select" interface="popover" placeholder="Selecione a categoria" formControlName="categoria">
+            <ion-select-option value="Sobremesa">Sobremesa</ion-select-option>
+            <ion-select-option value="Massas">Massas</ion-select-option>
+            <ion-select-option value="Salgados">Salgados</ion-select-option>
+            <ion-select-option value="Sopas">Sopas</ion-select-option>
+            <ion-select-option value="Bebidas">Bebidas</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+
+        <div class="ion-padding">
+          <ion-button [disabled]="pedidoForm.invalid" expand="block" type="submit" class="ion-no-margin">Pedir</ion-button>
+        </div>
+      </form>
+    </div>
+  </div>
 
 </ion-content>

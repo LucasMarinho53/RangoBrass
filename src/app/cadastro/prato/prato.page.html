@@ -6,5 +6,43 @@
 </ion-header>
 
 <ion-content>
+  <div class="upper">
+    <div class="icon">
+      <ion-icon name="ice-cream"></ion-icon>
+    </div>
+    <p id="prato">Cadastre um Prato!</p>
+  </div>
+
+  <div class="middle">
+    <div class="box">
+      <form [formGroup]="pratoForm" fullscreen (submit)="createPrato(pratoForm.value)">
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+          <ion-item>
+            <ion-label position="stacked" color="primary">Nome do Prato</ion-label>
+            <ion-input id="input" formControlName="nome" type="text" required></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-item class="item-background-color">
+          <ion-select id="select" interface="popover" placeholder="Selecione a categoria" formControlName="categoria">
+            <ion-select-option value="Sobremesa">Sobremesa</ion-select-option>
+            <ion-select-option value="Massas">Massas</ion-select-option>
+            <ion-select-option value="Salgados">Salgados</ion-select-option>
+            <ion-select-option value="Sopas">Sopas</ion-select-option>
+            <ion-select-option value="Bebidas">Bebidas</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+          <ion-item>
+            <ion-label position="stacked" color="primary">Faça a Descrição</ion-label>
+            <ion-input id="input" formControlName="descricao" type="text" required></ion-input>
+          </ion-item>
+        </ion-list>
+
+        <div class="ion-padding">
+          <ion-button [disabled]="pratoForm.invalid" expand="block" type="submit" class="ion-no-margin">Cadastrar Prato</ion-button>
+        </div>
+      </form>
+    </div>
+  </div>
 
 </ion-content>

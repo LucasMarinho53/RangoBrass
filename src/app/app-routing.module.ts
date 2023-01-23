@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { redirectUnauthorizedTo, redirectLoggedInTo, canActivate, } from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(('login'));
+const redirectLoggedInToHome = () => redirectLoggedInTo(('perfil'));
 
 const routes: Routes = [
   {
@@ -29,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./usuario/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./usuario/login/login.module').then( m => m.LoginPageModule), ...canActivate(redirectLoggedInToHome)
   },
   {
     path: 'listagem',
@@ -38,6 +42,10 @@ const routes: Routes = [
   {
     path: 'editar/:id',
     loadChildren: () => import('./cadastro/editar/editar.module').then( m => m.EditarPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./usuario/perfil/perfil.module').then( m => m.PerfilPageModule), ...canActivate(redirectUnauthorizedToLogin)
   },
 
 

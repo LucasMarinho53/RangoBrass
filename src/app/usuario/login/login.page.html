@@ -15,19 +15,31 @@
 
   <div class="middle">
     <div class="box">
-      <form [formGroup]="loginForm" fullscreen>
+      <form [formGroup]="loginForm" (ngSubmit)="login()" fullscreen>
         <ion-item class="item-background-color">
           <ion-label position="floating" color="primary">Digite seu E-mail</ion-label>
           <ion-input type="email" placeholder="E-mail" formControlName="email" required color="primary"></ion-input>
+          <ion-note slot="error" *ngIf="(email?.dirty || email?.touched) && email?.errors">Email invalido</ion-note>
         </ion-item>
         <ion-item class="item-background-color">
           <ion-label position="floating" color="primary">Digite sua Senha</ion-label>
           <ion-input [type]="type ? 'password' : 'text'" placeholder="Senha" formControlName="senha" required color="primary"></ion-input>
           <ion-icon class="ion-align-self-center" slot="end" name="eye-outline" (click)="changeType()" color="primary"></ion-icon>
+          <ion-note slot="error" *ngIf="(senha?.dirty || senha?.touched) && senha?.errors">Senha precisa conter 6 caracters</ion-note>
         </ion-item>
+
+          <ion-item class="item-background-color">
+            <ion-label position="floating" color="primary">Confirmação de Senha</ion-label>
+            <ion-input id="input" [type]="type ? 'password' : 'text'" formControlName="senhaconfirm" color="primary" required></ion-input>
+          </ion-item>
+
 
         <div class="ion-padding">
           <ion-button [disabled]="loginForm.invalid" expand="block" type="submit" class="ion-no-margin">Logar</ion-button>
+        </div>
+
+        <div class="ion-padding">
+          <ion-button expand="block" type="button" (click)="register()" class="ion-no-margin">Crie seu Login</ion-button>
         </div>
 
         <p id="esqueceusenha" (click)="esqueceuSenha()">Esqueceu a senha?</p>

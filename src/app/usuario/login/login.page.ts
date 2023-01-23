@@ -38,6 +38,14 @@ export class LoginPage implements OnInit {
     });
   }
 
+  recuperarSenha(){
+    this.authService.senhaperdida(this.email?.getRawValue()).then(()=>{
+      alert('Enviamos um e-mail para recuperação de senha.')
+    }).catch((err)=>{
+      alert(err)
+    })
+  }
+
   async register() {
     const loading = await this.loadingController.create();
     await loading.present();

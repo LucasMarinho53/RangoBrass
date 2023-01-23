@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { Cliente } from '../model/cliente.model';
 
 @Injectable({
@@ -34,6 +34,12 @@ export class AuthService {
     } catch (e) {
       return null;
     }
+  }
+
+  async senhaperdida(email:string){
+    const mail = sendPasswordResetEmail(this.auth,email);
+    return mail;
+
   }
 
   logout() {

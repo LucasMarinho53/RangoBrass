@@ -1,3 +1,7 @@
+ion-content{
+  --background: #3880ff;
+  min-height: 100%;
+
 ion-avatar{
   width: 128px;
   height: 128px;
@@ -17,4 +21,6 @@ ion-avatar{
   justify-content: center;
   align-items: center;
   font-weight: 500;
+}
+
 }

@@ -42,7 +42,10 @@ export class LoginPage implements OnInit {
     this.authService.senhaperdida(this.email?.getRawValue()).then(()=>{
       alert('Enviamos um e-mail para recuperação de senha.')
     }).catch((err)=>{
-      alert(err)
+
+      if(err == 'FirebaseError: Firebase: Error (auth/invalid-email).'){
+        alert('E-mail invalido.')
+      }
     })
   }
 

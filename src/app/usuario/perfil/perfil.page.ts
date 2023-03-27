@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { Cliente } from 'src/app/model/cliente.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { AvatarService } from 'src/app/services/avatar.service';
 
@@ -13,6 +14,7 @@ import { AvatarService } from 'src/app/services/avatar.service';
 export class PerfilPage implements OnInit {
 
   profile: any = null;
+  cliente!:Cliente;
 
   constructor(private authService: AuthService,
     private loadingController: LoadingController,
